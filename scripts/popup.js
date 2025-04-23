@@ -1,27 +1,27 @@
 /*
-@param{number}boutonPartager : Un bouton 
+@param{number}shareButton : Un bouton 
 */
 
-function afficherPopUp() {
+function showPopup() {
   let blocPopup = document.querySelector(".popupBackground");
   blocPopup.classList.add("active");
 }
 
-function cacherPopUp() {
+function hidePoppup() {
   let blocPopup = document.querySelector(".popupBackground");
   blocPopup.classList.remove("active");
 }
 
 function initPopUp() {
-  let boutonPartager = document.querySelector(".zonePartage button");
+  let shareButton = document.querySelector(".zonePartage button");
   let popupBackground = document.querySelector(".popupBackground");
-  boutonPartager.addEventListener("click", () => {
-    afficherPopUp();
+  shareButton.addEventListener("click", () => {
+    showPopup();
   });
 
-  popupBackground.addEventListener("click", (Event) => {
-    if (Event.target === popupBackground) {
-      cacherPopUp();
+  popupBackground.addEventListener("click", (e) => {
+    if (e.target === popupBackground) {
+      hidePoppup();
     }
   });
 }

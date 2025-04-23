@@ -1,38 +1,36 @@
 let score = 0;
-let listeProposition = "";
+let listProposition = "";
 let i = 0;
-let btnValiderMot = document.getElementById("btnValiderMot");
-function afficherScore(score, listeQuestion) {
-  let afficheScore = document.querySelector(".zoneScore span");
-  afficheScore.innerHTML = ` ${score}/${listeQuestion}`;
+let btnValidate = document.getElementById("btnValiderMot");
+function showScore(score, questionList) {
+  let showScore = document.querySelector(".zoneScore span");
+  showScore.innerHTML = ` ${score}/${questionList}`;
 }
-/* Fonction demandant les mots ou les 
- phrases */
+/*function asking if the user want words or phrases */
 
 function askWordOrPhrase() {
-  let listeBouton = document.querySelectorAll("input[name=optionSource]");
-
-  for (let index = 0; index < listeBouton.length; index++) {
-    if (listeBouton[index].defaultChecked && listeBouton[index].value === "1") {
-      listeProposition = listeMot;
-      console.log(`Element ${listeBouton[index].id} coché par défaut`);
+  let listButton = document.querySelectorAll("input[name=optionSource]");
+  for (let index = 0; index < listButton.length; index++) {
+    if (listButton[index].defaultChecked && listButton[index].value === "1") {
+      listProposition = listeMot;
+      console.log(`Element ${listButton[index].id} coché par défaut`);
     } else if (
-      listeBouton[index].defaultChecked &&
-      listeBouton[index].value === "2"
+      listButton[index].defaultChecked &&
+      listButton[index].value === "2"
     ) {
-      listeProposition = listePhrase;
-      console.log(`Element ${listeBouton[index].id} coché par défaut`);
+      listProposition = listePhrase;
+      console.log(`Element ${listButton[index].id} coché par défaut`);
     }
-    afficherProposition(listeProposition[0]);
-    listeBouton[index].addEventListener("change", (Event) => {
+    showProposition(listProposition[0]);
+    listButton[index].addEventListener("change", (Event) => {
       if (Event.target.value === "1") {
-        listeProposition = listeMot;
+        listProposition = listeMot;
         console.log("mot");
       } else {
-        listeProposition = listePhrase;
+        listProposition = listePhrase;
         console.log("phrase");
       }
-      afficherProposition(listeProposition[0]);
+      showProposition(listProposition[0]);
     });
   }
 }
@@ -40,12 +38,12 @@ function askWordOrPhrase() {
  * @params {string}  element - Element string à afficher
  *
  */
-function afficherProposition(element) {
+function showProposition(element) {
   zoneProposition = document.querySelector(".zoneProposition");
   zoneProposition.innerHTML = element;
 }
 
-function partageScore() {
+function shareScore() {
   let btnEnvoyerMail = document.querySelector("form");
   btnEnvoyerMail.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -54,20 +52,20 @@ function partageScore() {
   });
 }
 
-//Lancement du jeu
+//Lunching game
 function launchGame() {
-  btnValiderMot.addEventListener("click", () => {
-    if (ecritureUtilisateur.value === listeProposition[i]) {
+  btnValidate.addEventListener("click", () => {
+    if (ecritureUtilisateur.value === listProposition[i]) {
       score++;
     }
     i++;
     ecritureUtilisateur.value = "";
-    if (listeProposition[i] === undefined) {
-      afficherProposition("game done");
-      btnValiderMot.disabled = true;
+    if (listProposition[i] === undefined) {
+      showProposition("Le jeu est fini votre score ci-dessous ");
+      btnValidate.disabled = true;
     } else {
-      afficherProposition(listeProposition[i]);
+      showProposition(listProposition[i]);
     }
-    afficherScore(score, i);
+    showScore(score, i);
   });
 }
