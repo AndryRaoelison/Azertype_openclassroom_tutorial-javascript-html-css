@@ -63,6 +63,7 @@ function launchGame() {
     if (listProposition[i] === undefined) {
       showProposition("Le jeu est fini votre score ci-dessous ");
       btnValidate.disabled = true;
+      ecritureUtilisateur.disabled = true;
     } else {
       showProposition(listProposition[i]);
     }
