@@ -36,7 +36,7 @@ Il s'agit d'un projet éducatif réalisé dans le cadre du parcours développeur
 
 ##  Objectif :
 
-L'objectif de ce projet est d'améliorer ses compétences en JavaScript en créant un jeu interactif dans lequel l'utilisateur doit taper les mots affichés le plus rapidement et précisément possible.
+L'objectif de ce projet est d'améliorer les compétences en JavaScript en créant un jeu interactif dans lequel l'utilisateur doit taper les mots affichés le plus rapidement et précisément possible.
 
 ##  Fonctionnalités :
 
